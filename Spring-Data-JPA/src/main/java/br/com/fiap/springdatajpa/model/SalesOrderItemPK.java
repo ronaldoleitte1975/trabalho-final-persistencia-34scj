@@ -12,7 +12,7 @@ public class SalesOrderItemPK implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
-	@ManyToOne
+	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "sales_order_id")
 	private SalesOrder salesOrder;
 

@@ -120,7 +120,7 @@ public class Customer {
 		return salesOrders;
 	}
 
-	public void setPedidos(List<SalesOrder> salesOrders) {
+	public void setSalesOrders(List<SalesOrder> salesOrders) {
 		this.salesOrders = salesOrders;
 	}
 	
