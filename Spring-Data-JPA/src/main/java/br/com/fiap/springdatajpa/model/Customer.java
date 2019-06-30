@@ -38,10 +38,10 @@ public class Customer {
 	private Set<String> phones = new HashSet<>();
 
 	@OneToMany(mappedBy = "customer", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-	private List<SalesOrder> pedidos = new ArrayList<>();
+	private List<SalesOrder> salesOrders = new ArrayList<>();
 
 	public Customer(Integer id, String name, String surname, Date birthDate, char gender, Set<Address> address,
-			Set<String> phones, List<SalesOrder> pedidos) {
+			Set<String> phones, List<SalesOrder> salesOrders) {
 		super();
 		this.id = id;
 		this.name = name;
@@ -50,7 +50,7 @@ public class Customer {
 		this.gender = gender;
 		this.address = address;
 		this.phones = phones;
-		this.pedidos = pedidos;
+		this.salesOrders = salesOrders;
 	}	
 
 	public Customer() {
@@ -116,12 +116,12 @@ public class Customer {
 		this.phones = phones;
 	}
 
-	public List<SalesOrder> getPedidos() {
-		return pedidos;
+	public List<SalesOrder> getSalesOrders() {
+		return salesOrders;
 	}
 
-	public void setPedidos(List<SalesOrder> pedidos) {
-		this.pedidos = pedidos;
+	public void setSalesOrders(List<SalesOrder> salesOrders) {
+		this.salesOrders = salesOrders;
 	}
 	
 	

@@ -12,18 +12,18 @@ public class SalesOrderItemPK implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
-	@ManyToOne
+	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "sales_order_id")
 	private SalesOrder salesOrder;
 
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "product_id")
-	private Product product;
+	@JoinColumn(name = "inventory_id")
+	private Inventory inventory;
 
-	public SalesOrderItemPK(SalesOrder salesOrder, Product product) {
+	public SalesOrderItemPK(SalesOrder salesOrder, Inventory inventory) {
 		super();
 		this.salesOrder = salesOrder;
-		this.product = product;
+		this.inventory = inventory;
 	}
 
 	public SalesOrderItemPK() {
@@ -39,12 +39,12 @@ public class SalesOrderItemPK implements Serializable {
 		this.salesOrder = salesOrder;
 	}
 
-	public Product getProduct() {
-		return product;
+	public Inventory getInventory() {
+		return inventory;
 	}
 
-	public void setProduct(Product product) {
-		this.product = product;
+	public void setInventory(Inventory inventory) {
+		this.inventory = inventory;
 	}
 
 }
