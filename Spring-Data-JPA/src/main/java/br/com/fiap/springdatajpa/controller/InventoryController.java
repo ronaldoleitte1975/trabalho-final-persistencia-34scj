@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.RequestBody;
 
 import java.net.URI;
+import java.util.List;
 
 @RestController
 @RequestMapping("/persistence/v1/inventory")
@@ -18,6 +19,11 @@ public class InventoryController {
 
     @Autowired
     //private InventoryService inventoryService;
+
+    @RequestMapping(method = RequestMethod.GET, headers="Accept=application/json, Content-type=application/json")
+    public ResponseEntity<List<InventoryResponse>> getAllInventories(){
+        return ResponseEntity.ok(null);
+    }
 
     @RequestMapping(method = RequestMethod.GET, value = "/{id}",
             headers="Accept=application/json, Content-type=application/json")

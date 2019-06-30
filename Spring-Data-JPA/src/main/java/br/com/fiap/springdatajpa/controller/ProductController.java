@@ -7,6 +7,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.net.URI;
+import java.util.List;
 
 @RestController
 @RequestMapping("/persistence/v1/product")
@@ -14,6 +15,11 @@ public class ProductController {
 
     @Autowired
     //private ProductService productService;
+
+    @RequestMapping(method = RequestMethod.GET, headers="Accept=application/json, Content-type=application/json")
+    public ResponseEntity<List<ProductResponse>> getAllProducts(){
+        return ResponseEntity.ok(null);
+    }
 
     @RequestMapping(method = RequestMethod.GET, value = "/{id}",
             headers="Accept=application/json, Content-type=application/json")
