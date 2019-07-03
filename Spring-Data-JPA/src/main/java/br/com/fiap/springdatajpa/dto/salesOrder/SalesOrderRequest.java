@@ -3,9 +3,9 @@ package br.com.fiap.springdatajpa.dto.salesOrder;
 import java.util.List;
 
 public class SalesOrderRequest {
-    Integer customerId;
-    Integer status;
-    List<ProductDTO> itens;
+    private Integer customerId;
+    private Integer status;
+    private List<ProductDTO> itens;
 
     public Integer getCustomerId() {
         return customerId;

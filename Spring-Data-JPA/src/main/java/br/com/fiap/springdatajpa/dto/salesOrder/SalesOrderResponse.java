@@ -3,10 +3,10 @@ package br.com.fiap.springdatajpa.dto.salesOrder;
 import java.util.List;
 
 public class SalesOrderResponse {
-    Integer id;
-    Integer customerId;
-    Integer status;
-    List<ProductDTO> itens;
+    private Integer id;
+    private Integer customerId;
+    private Integer status;
+    private List<ProductDTO> itens;
 
     public Integer getId() {
         return id;

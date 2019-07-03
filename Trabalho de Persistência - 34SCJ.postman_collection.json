@@ -1,0 +1,167 @@
+{
+	"info": {
+		"_postman_id": "28c3f6d8-9559-4621-afaa-3fbf9160c7eb",
+		"name": "Trabalho de Persistência - 34SCJ",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Customer",
+			"description": "",
+			"item": [
+				{
+					"name": "getAllCustomers",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"url": {
+							"raw": "http://localhost:8085/persistence/v1/customer",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8085",
+							"path": [
+								"persistence",
+								"v1",
+								"customer"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getCustomerById",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"url": {
+							"raw": "http://localhost:8085/persistence/v1/customer/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8085",
+							"path": [
+								"persistence",
+								"v1",
+								"customer",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "createCustomer",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\t\"name\": \"name\",\r\n\t\"surname\": \"surname\",\r\n\t\"birthDate\": \"12/10/1981\",\r\n\t\"gender\": \"M\",\r\n\t\"adress\": [{\r\n\t\t\t\"streetName\": \"streetName\",\r\n\t\t\t\"number\": 1,\r\n\t\t\t\"complement\": \"complement\",\r\n\t\t\t\"postalCode\": \"03325885\",\r\n\t\t\t\"city\": \"city\",\r\n\t\t\t\"province\": \"province\",\r\n\t\t\t\"country\": \"country\",\r\n\t\t\t\"type\": 1\r\n\t\t},\r\n\t\t{\r\n\t\t\t\"streetName\": \"streetName\",\r\n\t\t\t\"number\": 2,\r\n\t\t\t\"complement\": \"complement\",\r\n\t\t\t\"postalCode\": \"03325885\",\r\n\t\t\t\"city\": \"city\",\r\n\t\t\t\"province\": \"province\",\r\n\t\t\t\"country\": \"country\",\r\n\t\t\t\"type\": 1\r\n\t\t}\r\n\t],\r\n\t\"phones\": [{\r\n\t\t\t\"number\": \"988562245\"\r\n\t\t},\r\n\t\t{\r\n\t\t\t\"number\": \"25699785\"\r\n\t\t}\r\n\t]\r\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8085/persistence/v1/customer",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8085",
+							"path": [
+								"persistence",
+								"v1",
+								"customer"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "updateCustomer",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\t\"name\": \"name\",\r\n\t\"surname\": \"surname\",\r\n\t\"birthDate\": \"11/12/1982\",\r\n\t\"gender\": \"F\",\r\n\t\"adress\": [{\r\n\t\t\t\"streetName\": \"streetName\",\r\n\t\t\t\"number\": 1,\r\n\t\t\t\"complement\": \"complement\",\r\n\t\t\t\"postalCode\": \"03325885\",\r\n\t\t\t\"city\": \"city\",\r\n\t\t\t\"province\": \"province\",\r\n\t\t\t\"country\": \"country\",\r\n\t\t\t\"type\": 1\r\n\t\t},\r\n\t\t{\r\n\t\t\t\"streetName\": \"streetName\",\r\n\t\t\t\"number\": 2,\r\n\t\t\t\"complement\": \"complement\",\r\n\t\t\t\"postalCode\": \"03325885\",\r\n\t\t\t\"city\": \"city\",\r\n\t\t\t\"province\": \"province\",\r\n\t\t\t\"country\": \"country\",\r\n\t\t\t\"type\": 1\r\n\t\t}\r\n\t],\r\n\t\"phones\": [{\r\n\t\t\t\"number\": \"978562245\"\r\n\t\t},\r\n\t\t{\r\n\t\t\t\"number\": \"24699785\"\r\n\t\t}\r\n\t]\r\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8085/persistence/v1/customer/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8085",
+							"path": [
+								"persistence",
+								"v1",
+								"customer",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "deleteCustomer",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:8085/persistence/v1/customer/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8085",
+							"path": [
+								"persistence",
+								"v1",
+								"customer",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Inventory",
+			"description": "",
+			"item": []
+		},
+		{
+			"name": "Product",
+			"description": "",
+			"item": []
+		},
+		{
+			"name": "SalesOrder",
+			"description": "",
+			"item": []
+		}
+	]
+}

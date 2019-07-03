@@ -1,12 +1,22 @@
 package br.com.fiap.springdatajpa.dto.product;
 
 public class ProductResponse {
+    public ProductResponse() {
+    }
 
-    Integer id;
-    String name;
-    String description;
-    Double price;
-    Integer categoryId;
+    public ProductResponse(Integer id, String name, String description, Double price, Integer categoryId) {
+        this.id = id;
+        this.name = name;
+        this.description = description;
+        this.price = price;
+        this.categoryId = categoryId;
+    }
+
+    private Integer id;
+    private String name;
+    private String description;
+    private Double price;
+    private Integer categoryId;
 
     public Integer getId() {
         return id;

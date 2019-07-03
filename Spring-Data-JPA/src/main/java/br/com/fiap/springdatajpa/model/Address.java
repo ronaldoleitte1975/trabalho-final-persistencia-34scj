@@ -23,19 +23,33 @@ public class Address {
 	private Integer number;
 	private String complement;
 	private String postalCode;
-	
-	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "city_id")
-	private City city;
-	
-	@ManyToOne(fetch = FetchType.LAZY)
+	private String city;
+	private String province;
+	private String country;
+
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "customer_id")
 	private Customer cliente;
 	
 	private Integer type;
 
-	public Address(Integer id, String street, Integer number, String complement, String postalCode, City city,
-			Customer cliente, AddressType type) {
+	public Address(){}
+
+	public Address(String street, Integer number, String complement, String postalCode, String city,
+				   String province, String country, AddressType type) {
+		super();
+		this.street = street;
+		this.number = number;
+		this.complement = complement;
+		this.postalCode = postalCode;
+		this.city = city;
+		this.province = province;
+		this.country = country;
+		this.type = (type == null) ? null : type.getCode();
+	}
+
+	public Address(Integer id, String street, Integer number, String complement, String postalCode, String city,
+				   String province, String country, Customer cliente, AddressType type) {
 		super();
 		this.id = id;
 		this.street = street;
@@ -43,16 +57,11 @@ public class Address {
 		this.complement = complement;
 		this.postalCode = postalCode;
 		this.city = city;
+		this.province = province;
+		this.country = country;
 		this.cliente = cliente;
 		this.type = (type == null) ? null : type.getCode();
-	}	
-
-	public Address() {
-		super();
-		// TODO Auto-generated constructor stub
 	}
-
-
 
 	public Integer getId() {
 		return id;
@@ -94,12 +103,28 @@ public class Address {
 		this.postalCode = postalCode;
 	}
 
-	public City getCity() {
+	public String getCity() {
 		return city;
 	}
 
-	public void setCity(City city) {
+	public void setCity(String city) {
 		this.city = city;
+	}
+
+	public String getProvince() {
+		return province;
+	}
+
+	public void setProvince(String province) {
+		this.province = province;
+	}
+
+	public String getCountry() {
+		return country;
+	}
+
+	public void setCountry(String country) {
+		this.country = country;
 	}
 
 	public Customer getCliente() {

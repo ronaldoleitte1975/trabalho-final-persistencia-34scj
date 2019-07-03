@@ -7,7 +7,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import br.com.fiap.springdatajpa.model.SalesOrder;
 import br.com.fiap.springdatajpa.repository.SalesOrderRepository;
+import org.springframework.stereotype.Service;
 
+@Service
 public class SalesOrderServiceImpl implements SalesOrderService{
 	
 	@Autowired

@@ -1,32 +1,20 @@
 package br.com.fiap.springdatajpa.dto.customer;
 
 public class PhoneDTO {
-
-    Integer ddi;
-    Integer ddd;
-    Integer number;
-
-    public Integer getDdi() {
-        return ddi;
+    public PhoneDTO() {
     }
 
-    public void setDdi(Integer ddi) {
-        this.ddi = ddi;
+    public PhoneDTO(String number) {
+        this.number = number;
     }
 
-    public Integer getDdd() {
-        return ddd;
-    }
+    private String number;
 
-    public void setDdd(Integer ddd) {
-        this.ddd = ddd;
-    }
-
-    public Integer getNumber() {
+    public String getNumber() {
         return number;
     }
 
-    public void setNumber(Integer number) {
+    public void setNumber(String number) {
         this.number = number;
     }
 }
