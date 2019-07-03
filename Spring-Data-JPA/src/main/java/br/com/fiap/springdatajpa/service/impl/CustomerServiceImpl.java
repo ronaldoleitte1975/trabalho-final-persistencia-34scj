@@ -1,4 +1,4 @@
-package br.com.fiap.springdatajpa.service;
+package br.com.fiap.springdatajpa.service.impl;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -6,6 +6,7 @@ import java.util.stream.Collectors;
 import java.util.stream.StreamSupport;
 
 import br.com.fiap.springdatajpa.advice.ResponseError;
+import br.com.fiap.springdatajpa.service.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import br.com.fiap.springdatajpa.model.Customer;
@@ -14,7 +15,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
 @Service
-public class CustomerServiceImpl implements CustomerService{
+public class CustomerServiceImpl implements CustomerService {
 	@Autowired
 	private CustomerRepository customerRepository;
 	
