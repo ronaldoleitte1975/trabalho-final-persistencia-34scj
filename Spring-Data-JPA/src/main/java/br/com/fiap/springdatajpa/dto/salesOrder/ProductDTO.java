@@ -1,8 +1,8 @@
 package br.com.fiap.springdatajpa.dto.salesOrder;
 
 public class ProductDTO {
-    Integer productId;
-    Integer quantity;
+    private Integer productId;
+    private Integer quantity;
 
     public Integer getProductId() {
         return productId;

@@ -40,9 +40,32 @@ public class Customer {
 	@OneToMany(mappedBy = "customer", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	private List<SalesOrder> salesOrders = new ArrayList<>();
 
+	public Customer() {
+	}
+
+	public Customer(String name, String surname, Date birthDate, char gender, Set<Address> address,
+					Set<String> phones) {
+		this.name = name;
+		this.surname = surname;
+		this.birthDate = birthDate;
+		this.gender = gender;
+		this.address = address;
+		this.phones = phones;
+	}
+
 	public Customer(Integer id, String name, String surname, Date birthDate, char gender, Set<Address> address,
-			Set<String> phones, List<SalesOrder> salesOrders) {
-		super();
+					Set<String> phones) {
+		this.id = id;
+		this.name = name;
+		this.surname = surname;
+		this.birthDate = birthDate;
+		this.gender = gender;
+		this.address = address;
+		this.phones = phones;
+	}
+
+	public Customer(Integer id, String name, String surname, Date birthDate, char gender, Set<Address> address,
+					Set<String> phones, List<SalesOrder> salesOrders) {
 		this.id = id;
 		this.name = name;
 		this.surname = surname;
@@ -51,14 +74,7 @@ public class Customer {
 		this.address = address;
 		this.phones = phones;
 		this.salesOrders = salesOrders;
-	}	
-
-	public Customer() {
-		super();
-		// TODO Auto-generated constructor stub
 	}
-
-
 
 	public Integer getId() {
 		return id;

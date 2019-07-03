@@ -2,10 +2,10 @@ package br.com.fiap.springdatajpa.dto.product;
 
 public class ProductRequest {
 
-    String name;
-    String description;
-    Double price;
-    Integer categoryId;
+    private String name;
+    private String description;
+    private Double price;
+    private Integer categoryId;
 
     public String getName() {
         return name;

@@ -2,8 +2,8 @@ package br.com.fiap.springdatajpa.dto.inventory;
 
 public class InventoryRequest {
 
-    Integer productId;
-    Integer amount;
+    private Integer productId;
+    private Integer amount;
 
     public Integer getProductId() {
         return productId;

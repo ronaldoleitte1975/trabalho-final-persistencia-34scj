@@ -4,12 +4,12 @@ import java.util.List;
 
 public class CustomerRequest {
 
-    String name;
-    String surname;
-    String birthDate;
-    Character gender;
-    List<AddressDTO> adress;
-    List<PhoneDTO> phones;
+    private String name;
+    private String surname;
+    private String birthDate;
+    private char gender;
+    private List<AddressDTO> adress;
+    private List<PhoneDTO> phones;
 
     public String getName() {
         return name;
@@ -35,11 +35,11 @@ public class CustomerRequest {
         this.birthDate = birthDate;
     }
 
-    public Character getGender() {
+    public char getGender() {
         return gender;
     }
 
-    public void setGender(Character gender) {
+    public void setGender(char gender) {
         this.gender = gender;
     }
 

@@ -4,13 +4,27 @@ import java.util.List;
 
 public class CustomerResponse {
 
-    Integer id;
-    String name;
-    String surname;
-    String birthDate;
-    Character gender;
-    List<AddressDTO> adress;
-    List<PhoneDTO> phones;
+    public CustomerResponse() {
+    }
+
+    public CustomerResponse(Integer id, String name, String surname, String birthDate, Character gender,
+                            List<AddressDTO> address, List<PhoneDTO> phones) {
+        this.id = id;
+        this.name = name;
+        this.surname = surname;
+        this.birthDate = birthDate;
+        this.gender = gender;
+        this.address = address;
+        this.phones = phones;
+    }
+
+    private Integer id;
+    private String name;
+    private String surname;
+    private String birthDate;
+    private Character gender;
+    private List<AddressDTO> address;
+    private List<PhoneDTO> phones;
 
     public Integer getId() {
         return id;
@@ -52,12 +66,12 @@ public class CustomerResponse {
         this.gender = gender;
     }
 
-    public List<AddressDTO> getAdress() {
-        return adress;
+    public List<AddressDTO> getAddress() {
+        return address;
     }
 
-    public void setAdress(List<AddressDTO> adress) {
-        this.adress = adress;
+    public void setAddress(List<AddressDTO> adress) {
+        this.address = adress;
     }
 
     public List<PhoneDTO> getPhones() {
@@ -67,4 +81,5 @@ public class CustomerResponse {
     public void setPhones(List<PhoneDTO> phones) {
         this.phones = phones;
     }
+
 }

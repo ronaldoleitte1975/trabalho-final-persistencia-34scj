@@ -2,9 +2,9 @@ package br.com.fiap.springdatajpa.dto.inventory;
 
 public class InventoryResponse {
 
-    Integer inventoryId;
-    Integer productId;
-    Integer amount;
+    private Integer inventoryId;
+    private Integer productId;
+    private Integer amount;
 
     public Integer getInventoryId() {
         return inventoryId;
