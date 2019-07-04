@@ -39,7 +39,7 @@ public class SalesOrderServiceImpl implements SalesOrderService {
 	}
 
 	@Override
-	public SalesOrder updateSalesOrder(SalesOrder salesOrder) {
+	public void updateSalesOrder(SalesOrder salesOrder) {
 
 		SalesOrder storedSalesOrder = salesOrderRepository.findById(salesOrder.getId()).orElseThrow(() ->
 				new ResponseError(HttpStatus.NOT_FOUND, "Pedido de venda não encontrado"));
@@ -50,7 +50,7 @@ public class SalesOrderServiceImpl implements SalesOrderService {
 		storedSalesOrder.setStatus(salesOrder.getStatus());
 		storedSalesOrder.setShipToAddress(salesOrder.getShipToAddress());
 
-		return salesOrderRepository.save(salesOrder);
+		salesOrderRepository.save(salesOrder);
 	}
 
 	@Override

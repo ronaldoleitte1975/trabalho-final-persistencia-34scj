@@ -1,22 +1,27 @@
 package br.com.fiap.springdatajpa.dto.product;
 
+import br.com.fiap.springdatajpa.dto.category.CategoryDTO;
+import br.com.fiap.springdatajpa.dto.category.CategoryResponse;
+
+import java.util.List;
+
 public class ProductResponse {
     public ProductResponse() {
     }
 
-    public ProductResponse(Integer id, String name, String description, Double price, Integer categoryId) {
+    public ProductResponse(Integer id, String name, String description, Double price, List<CategoryResponse> categories) {
         this.id = id;
         this.name = name;
         this.description = description;
         this.price = price;
-        this.categoryId = categoryId;
+        this.categories = categories;
     }
 
     private Integer id;
     private String name;
     private String description;
     private Double price;
-    private Integer categoryId;
+    private List<CategoryResponse> categories;
 
     public Integer getId() {
         return id;
@@ -50,11 +55,11 @@ public class ProductResponse {
         this.price = price;
     }
 
-    public Integer getCategoryId() {
-        return categoryId;
+    public List<CategoryResponse> getCategories() {
+        return categories;
     }
 
-    public void setCategoryId(Integer categoryId) {
-        this.categoryId = categoryId;
+    public void setCategories(List<CategoryResponse> categories) {
+        this.categories = categories;
     }
 }

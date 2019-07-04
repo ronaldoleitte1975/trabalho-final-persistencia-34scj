@@ -8,6 +8,7 @@ import br.com.fiap.springdatajpa.service.InventoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
+import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
 
 @Service
@@ -31,8 +32,8 @@ public class InventoryServiceImpl implements InventoryService {
 	}
 
 	@Override
-	public InventoryItem updateInventoryItem(InventoryItem inventoryItem) {
-		return null;
+	public void updateInventoryItem(InventoryItem inventoryItem) {
+		throw new NotImplementedException();
 	}
 
 	@Override

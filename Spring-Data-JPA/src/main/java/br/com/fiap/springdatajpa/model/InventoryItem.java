@@ -14,7 +14,9 @@ public class InventoryItem {
 
 	@Id
 	private Integer productId;
-	
+
 	private Integer amount;
 
+	@OneToOne(fetch = FetchType.LAZY, mappedBy = "inventoryItem")
+	private Product product;
 }

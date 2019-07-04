@@ -12,6 +12,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.OneToOne;
 
 @Entity
 public class Product {
@@ -28,6 +29,17 @@ public class Product {
 	@ManyToMany(fetch = FetchType.LAZY)
 	@JoinTable(name = "product_category", joinColumns = @JoinColumn(name = "product_id"), inverseJoinColumns = @JoinColumn(name = "category_id"))
 	private List<Category> categories = new ArrayList<Category>();
+
+	@OneToOne(fetch = FetchType.LAZY)
+	@JoinTable(name = "product_inventory", joinColumns = @JoinColumn(name = "product_id"), inverseJoinColumns = @JoinColumn(name = "inventory_id"))
+	private InventoryItem inventoryItem;
+
+	public Product(String name, String description, Double price, List<Category> categories) {
+		this.name = name;
+		this.description = description;
+		this.price = price;
+		this.categories = categories;
+	}
 
 	public Product(Integer id, String name, String description, Double price, List<Category> categories) {
 		super();

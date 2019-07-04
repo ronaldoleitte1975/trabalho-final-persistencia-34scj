@@ -24,6 +24,19 @@ public class Category {
 	@ManyToMany(fetch = FetchType.LAZY, mappedBy = "categories")
 	private List<Product> products = new ArrayList<Product>();
 
+	public Category(Integer id) {
+		this.id = id;
+	}
+
+	public Category(String name) {
+		this.name = name;
+	}
+
+	public Category(Integer id, String name) {
+		this.id = id;
+		this.name = name;
+	}
+
 	public Category(Integer id, String name, List<Product> products) {
 		super();
 		this.id = id;

@@ -8,6 +8,6 @@ public interface SalesOrderService {
 	List<SalesOrder> getAllSalesOrders();
 	SalesOrder getSalesOrderById(Integer id);
 	SalesOrder addSalesOrder(SalesOrder salesOrder);
-	SalesOrder updateSalesOrder(SalesOrder salesOrder);
+	void updateSalesOrder(SalesOrder salesOrder);
 	void deleteSalesOrder(Integer id);
 }

@@ -38,7 +38,7 @@ public class CustomerServiceImpl implements CustomerService {
 	}
 
 	@Override
-	public Customer updateCustomer(Customer customer) {
+	public void updateCustomer(Customer customer) {
 		Customer storedCustomer = customerRepository.findById(customer.getId()).orElseThrow(() ->
 				new ResponseError(HttpStatus.NOT_FOUND, "Cliente não encontrado"));
 
@@ -48,7 +48,7 @@ public class CustomerServiceImpl implements CustomerService {
 		storedCustomer.setBirthDate(customer.getBirthDate());
 		storedCustomer.setAddress(customer.getAddress());
 
-		return customerRepository.save(customer);
+		customerRepository.save(storedCustomer);
 	}
 
 	@Override

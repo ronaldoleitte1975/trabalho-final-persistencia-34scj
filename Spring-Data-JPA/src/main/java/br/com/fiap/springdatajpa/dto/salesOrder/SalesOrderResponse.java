@@ -8,6 +8,13 @@ public class SalesOrderResponse {
     private Integer status;
     private List<ProductDTO> itens;
 
+    public SalesOrderResponse(Integer id, Integer customerId, Integer status, List<ProductDTO> itens) {
+        this.id = id;
+        this.customerId = customerId;
+        this.status = status;
+        this.itens = itens;
+    }
+
     public Integer getId() {
         return id;
     }
