@@ -34,13 +34,13 @@ public class SalesOrderController {
 
     @RequestMapping(method = RequestMethod.DELETE, value = "/{id}",
             produces = "application/json", headers = "Accept=application/json" )
-    public ResponseEntity<SalesOrderResponse> deleteSalesOrder(@PathVariable("id") Integer id){
+    public ResponseEntity<?> deleteSalesOrder(@PathVariable("id") Integer id){
         return ResponseEntity.noContent().build();
     }
 
     @RequestMapping(method = RequestMethod.PUT, value = "/{id}",
             produces = "application/json", headers = "Accept=application/json" )
-    public ResponseEntity<SalesOrderResponse> updateSalesOrder(@PathVariable("id") Integer id,
+    public ResponseEntity<?> updateSalesOrder(@PathVariable("id") Integer id,
                                                                @RequestBody SalesOrderRequest salesOrderRequest){
         return ResponseEntity.noContent().build();
     }

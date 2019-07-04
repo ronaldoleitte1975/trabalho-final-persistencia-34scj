@@ -1,11 +1,15 @@
 package br.com.fiap.springdatajpa.dto.product;
 
+import br.com.fiap.springdatajpa.dto.category.CategoryDTO;
+
+import java.util.List;
+
 public class ProductRequest {
 
     private String name;
     private String description;
     private Double price;
-    private Integer categoryId;
+    private List<CategoryDTO> categories;
 
     public String getName() {
         return name;
@@ -31,11 +35,11 @@ public class ProductRequest {
         this.price = price;
     }
 
-    public Integer getCategoryId() {
-        return categoryId;
+    public List<CategoryDTO> getCategories() {
+        return categories;
     }
 
-    public void setCategoryId(Integer categoryId) {
-        this.categoryId = categoryId;
+    public void setCategories(List<CategoryDTO> categories) {
+        this.categories = categories;
     }
 }

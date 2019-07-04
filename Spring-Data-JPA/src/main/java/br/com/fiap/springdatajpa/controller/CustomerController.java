@@ -27,6 +27,9 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+import static br.com.fiap.springdatajpa.utils.UtilMethods.toDate;
+import static br.com.fiap.springdatajpa.utils.UtilMethods.toDateString;
+
 @RestController
 @RequestMapping("/persistence/v1/customer")
 public class CustomerController {
@@ -40,9 +43,9 @@ public class CustomerController {
 
     @RequestMapping(method = RequestMethod.GET, produces = "application/json", headers = "Accept=application/json" )
     public ResponseEntity<List<CustomerResponse>> getAllCustomers(){
-        List<Customer> cutomers = customerService.getAllCustomer();
+        List<Customer> customers = customerService.getAllCustomer();
         List<CustomerResponse> customerResponse = new ArrayList<>();
-        cutomers.stream().forEach(customer -> customerResponse.add(
+        customers.stream().forEach(customer -> customerResponse.add(
                 new CustomerResponse(
                 customer.getId(),
                 customer.getName(),
@@ -72,7 +75,7 @@ public class CustomerController {
 
     @RequestMapping(method = RequestMethod.DELETE, value = "/{id}",
             produces = "application/json", headers = "Accept=application/json" )
-    public ResponseEntity<CustomerResponse> deleteCustomer(@PathVariable("id") Integer id){
+    public ResponseEntity<?> deleteCustomer(@PathVariable("id") Integer id){
         customerService.deleteCustomer(id);
 
         return ResponseEntity.noContent().build();
@@ -80,7 +83,7 @@ public class CustomerController {
 
     @RequestMapping(method = RequestMethod.PUT, value = "/{id}",
             produces = "application/json", headers = "Accept=application/json" )
-    public ResponseEntity<CustomerResponse> updateCustomer(@PathVariable("id") Integer id,
+    public ResponseEntity<?> updateCustomer(@PathVariable("id") Integer id,
                                                            @RequestBody CustomerRequest customerRequest){
 
         customerService.updateCustomer(new Customer(id, customerRequest.getName(), customerRequest.getSurname(),
@@ -103,7 +106,7 @@ public class CustomerController {
                             customer.getId(),
                             customer.getName(),
                             customer.getSurname(),
-                            customer.getBirthDate().toGMTString(),
+                            toDateString(customer.getBirthDate()),
                             customer.getGender(),
                             toAddressDTO(customer.getAddress()),
                             toPhoneDTO(customer.getPhones())));
@@ -139,20 +142,7 @@ public class CustomerController {
         return addressModel;
     }
 
-    private Date toDate(String date){
-        Date bind;
-        try {
-            bind = new SimpleDateFormat("dd/MM/yyyy").parse(date);
-        } catch (ParseException e) {
-            throw new ResponseError(HttpStatus.BAD_REQUEST, "Um ou mais campos informados estão com formato inválido.");
-        }
-        return bind;
-    }
 
-    private String toDateString(Date date){
-        SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
-        return formatter.format(date);
-    }
 
 
 }

@@ -7,6 +7,6 @@ public interface InventoryService {
 	Inventory getInventory();
 	InventoryItem getInventoryItem(Integer id);
 	InventoryItem addInventoryItem(InventoryItem inventoryItem);
-	InventoryItem updateInventoryItem(InventoryItem inventoryItem);
+	void updateInventoryItem(InventoryItem inventoryItem);
 	void deleteInventoryItem(Integer id);
 }

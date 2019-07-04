@@ -38,13 +38,13 @@ public class InventoryController {
 
     @RequestMapping(method = RequestMethod.DELETE, value = "/{id}",
             produces = "application/json", headers = "Accept=application/json" )
-    public ResponseEntity<InventoryResponse> deleteInventory(@PathVariable("id") Integer id){
+    public ResponseEntity<?> deleteInventory(@PathVariable("id") Integer id){
         return ResponseEntity.noContent().build();
     }
 
     @RequestMapping(method = RequestMethod.PUT, value = "/{id}",
             produces = "application/json", headers = "Accept=application/json" )
-    public ResponseEntity<InventoryResponse> updateInventory(@PathVariable("id") Integer id,
+    public ResponseEntity<?> updateInventory(@PathVariable("id") Integer id,
                                                              @RequestBody InventoryRequest inventoryRequest){
         return ResponseEntity.noContent().build();
     }

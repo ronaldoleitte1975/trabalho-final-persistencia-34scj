@@ -29,6 +29,13 @@ public class Product {
 	@JoinTable(name = "product_category", joinColumns = @JoinColumn(name = "product_id"), inverseJoinColumns = @JoinColumn(name = "category_id"))
 	private List<Category> categories = new ArrayList<Category>();
 
+	public Product(String name, String description, Double price, List<Category> categories) {
+		this.name = name;
+		this.description = description;
+		this.price = price;
+		this.categories = categories;
+	}
+
 	public Product(Integer id, String name, String description, Double price, List<Category> categories) {
 		super();
 		this.id = id;
