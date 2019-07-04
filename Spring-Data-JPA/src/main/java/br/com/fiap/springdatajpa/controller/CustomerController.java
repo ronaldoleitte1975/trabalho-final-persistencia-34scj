@@ -10,7 +10,6 @@ import br.com.fiap.springdatajpa.model.Customer;
 import br.com.fiap.springdatajpa.model.enums.AddressType;
 import br.com.fiap.springdatajpa.service.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -19,10 +18,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.net.URI;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -84,7 +80,7 @@ public class CustomerController {
     @RequestMapping(method = RequestMethod.PUT, value = "/{id}",
             produces = "application/json", headers = "Accept=application/json" )
     public ResponseEntity<?> updateCustomer(@PathVariable("id") Integer id,
-                                                           @RequestBody CustomerRequest customerRequest){
+                                            @RequestBody CustomerRequest customerRequest){
 
         customerService.updateCustomer(new Customer(id, customerRequest.getName(), customerRequest.getSurname(),
                 toDate(customerRequest.getBirthDate()), customerRequest.getGender(),

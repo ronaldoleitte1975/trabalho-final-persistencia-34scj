@@ -50,7 +50,13 @@ public class CategoryServiceImpl implements CategoryService {
 
 	@Override
 	public void deleteCategory(Integer id) {
-		categoryRepository.delete(categoryRepository.findById(id).orElseThrow(() ->
-				new ResponseError(HttpStatus.NOT_FOUND, "Categoria não encontrada")));
+		Category category = categoryRepository.findById(id).orElseThrow(() ->
+				new ResponseError(HttpStatus.NOT_FOUND, "Categoria não encontrada"));
+
+		if (category.getProducts().size() > 0){
+			throw new ResponseError(HttpStatus.UNPROCESSABLE_ENTITY, "Não é possível excluir a categoria, pois ela tem produtos associados");
+		}
+
+		categoryRepository.delete(category);
 	}
 }
