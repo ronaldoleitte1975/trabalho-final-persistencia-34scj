@@ -2,13 +2,16 @@ package br.com.fiap.springdatajpa.service.impl;
 
 import br.com.fiap.springdatajpa.advice.ResponseError;
 import br.com.fiap.springdatajpa.model.Inventory;
-import br.com.fiap.springdatajpa.model.InventoryItem;
 import br.com.fiap.springdatajpa.repository.InventoryRepository;
 import br.com.fiap.springdatajpa.service.InventoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import sun.reflect.generics.reflectiveObjects.NotImplementedException;
+
+import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.StreamSupport;
 
 
 @Service
@@ -17,23 +20,31 @@ public class InventoryServiceImpl implements InventoryService {
 	private InventoryRepository inventoryRepository;
 
 	@Override
-	public Inventory getInventory() {
-		return null;
+	public List<Inventory> getInventory() {
+		return StreamSupport.stream(inventoryRepository.findAll().spliterator(), false)
+				.collect(Collectors.toList());
 	}
 
 	@Override
-	public InventoryItem getInventoryItem(Integer id) {
-		return null;
+	public Inventory getInventoryItemByProductId(Integer id) {
+		return inventoryRepository.findByProductId(id).orElseThrow(() ->
+				new ResponseError(HttpStatus.NOT_FOUND, "Produto não encontrado no estoque"));
 	}
 
 	@Override
-	public InventoryItem addInventoryItem(InventoryItem inventoryItem) {
-		return null;
+	public Inventory createInventoryItem(Inventory inventory) {
+		return inventoryRepository.save(inventory);
 	}
 
 	@Override
-	public void updateInventoryItem(InventoryItem inventoryItem) {
-		throw new NotImplementedException();
+	public void updateInventoryItem(Inventory inventory) {
+		Inventory inventoryCustomer = inventoryRepository.findById(inventory.getInventoryId())
+				.orElseThrow(() -> new ResponseError(HttpStatus.NOT_FOUND, "Inventário não encontrado"));
+
+		inventoryCustomer.setProduct(inventory.getProduct());
+		inventoryCustomer.setAmount(inventory.getAmount());
+
+		inventoryRepository.save(inventoryCustomer);
 	}
 
 	@Override

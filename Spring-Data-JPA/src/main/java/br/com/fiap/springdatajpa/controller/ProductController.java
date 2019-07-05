@@ -75,7 +75,7 @@ public class ProductController {
 
     @RequestMapping(method = RequestMethod.POST, produces = "application/json", headers = "Accept=application/json" )
     public ResponseEntity<ProductResponse> createProduct(@RequestBody ProductRequest productRequest){
-        Product product = productService.addProduct(new Product(productRequest.getName(), productRequest.getDescription(),
+        Product product = productService.createProduct(new Product(productRequest.getName(), productRequest.getDescription(),
                 productRequest.getPrice(), toCategoriesModel(productRequest.getCategories())));
 
         return ResponseEntity

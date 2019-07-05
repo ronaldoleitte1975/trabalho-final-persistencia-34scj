@@ -1,12 +1,13 @@
 package br.com.fiap.springdatajpa.service;
 
 import br.com.fiap.springdatajpa.model.Inventory;
-import br.com.fiap.springdatajpa.model.InventoryItem;
+
+import java.util.List;
 
 public interface InventoryService {
-	Inventory getInventory();
-	InventoryItem getInventoryItem(Integer id);
-	InventoryItem addInventoryItem(InventoryItem inventoryItem);
-	void updateInventoryItem(InventoryItem inventoryItem);
+	List<Inventory> getInventory();
+	Inventory getInventoryItemByProductId(Integer id);
+	Inventory createInventoryItem(Inventory inventory);
+	void updateInventoryItem(Inventory inventory);
 	void deleteInventoryItem(Integer id);
 }

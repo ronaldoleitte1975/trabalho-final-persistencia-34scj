@@ -13,6 +13,11 @@ public class SalesOrderItem {
 
 	private Double price;
 
+	public SalesOrderItem(SalesOrderItemPK id, Integer quantity) {
+		this.id = id;
+		this.quantity = quantity;
+	}
+
 	public SalesOrderItem(SalesOrderItemPK id, Integer quantity, Double price) {
 		super();
 		this.id = id;

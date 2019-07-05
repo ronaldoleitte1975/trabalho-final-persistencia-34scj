@@ -16,7 +16,7 @@ public class Address {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	@Column(name = "ID")
+	@Column
 	private Integer id;
 
 	private String street;
@@ -45,6 +45,19 @@ public class Address {
 		this.city = city;
 		this.province = province;
 		this.country = country;
+		this.type = (type == null) ? null : type.getCode();
+	}
+
+	public Address(String street, Integer number, String complement, String postalCode, String city,
+				   String province, String country, Customer cliente, AddressType type) {
+		this.street = street;
+		this.number = number;
+		this.complement = complement;
+		this.postalCode = postalCode;
+		this.city = city;
+		this.province = province;
+		this.country = country;
+		this.cliente = cliente;
 		this.type = (type == null) ? null : type.getCode();
 	}
 

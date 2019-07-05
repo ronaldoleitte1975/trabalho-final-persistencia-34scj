@@ -16,13 +16,15 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.persistence.SequenceGenerator;
 
 @Entity
 public class Customer {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	@Column(name = "ID")
+	@GeneratedValue(generator = "generator", strategy = GenerationType.SEQUENCE)
+	@SequenceGenerator(initialValue = 1, name = "generator", sequenceName = "customer_sequence")
+	@Column
 	private Integer id;
 
 	private String name;
@@ -41,6 +43,14 @@ public class Customer {
 	private List<SalesOrder> salesOrders = new ArrayList<>();
 
 	public Customer() {
+	}
+
+	public Customer(String name, String surname, Date birthDate, char gender, Set<String> phones) {
+		this.name = name;
+		this.surname = surname;
+		this.birthDate = birthDate;
+		this.gender = gender;
+		this.phones = phones;
 	}
 
 	public Customer(String name, String surname, Date birthDate, char gender, Set<Address> address,
