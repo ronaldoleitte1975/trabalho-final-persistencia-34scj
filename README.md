@@ -142,6 +142,6 @@ Para testar os métodos da aplicação via Postman siga os passos a seguir:
 | 3      	| EM DESLOCAMENTO      	|
 | 4      	| ENTREGUE             	|
 
-### Repositório do projeto:
+### Links:
 
-#### [Github](https://github.com/ronaldoleitte1975/trabalho-final-persistencia-34scj)
+- #### [Repositório](https://github.com/ronaldoleitte1975/trabalho-final-persistencia-34scj)
