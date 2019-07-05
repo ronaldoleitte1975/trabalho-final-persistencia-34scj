@@ -1,12 +1,147 @@
-Trabalho Persist�ncia 34SCJ.
+# Trabalho Persistência 34SCJ.
 
-Para testar os m�todos da aplica��o siga os passos a seguir:
-1. Baixe a aplica��o Postman no seguinte endere�o: https://www.getpostman.com/downloads/
-2. Ap�s a instala��o abra o aplicativo do postman
-3. Ap�s o aplicativo abrir, siga as seguintes instru��es:
-    3.1. Clique em File no menu de op��es
-    3.2. Em seguida clique em Import
-    3.3. Tenha certeza de que a aba Import File est� selecionada na janela que abrir, caso n�o esteja selecione-a
-    3.4. Clique no bot�o Choose Files na janela que ser� aberta
-    3.5. Escolha o arquivo "Trabalho de Persist�ncia - 34SCJ.postman_collection.json" presente na raiz do projeto.
-4. Pronto!
+## Integrantes: 
+
+| RM     	| NOME                     	|
+|--------	|--------------------------	|
+| 334242 	| BRUNO DELPHINO ZAMBOTTI  	|
+|        	| DIEGO LANDI RIBEIRO      	|
+| 333906 	| EDUARDO MATOSO DE LIMA   	|
+| 333792 	| FERNANDA LEMBO VEDOVELLO 	|
+| 333788 	| GIOVANI SILVA            	|
+| 334110 	| HENRIQUE SUEL DA SILVA   	|
+| 334151 	| MARCELO ZANI             	|
+| 333515 	| RONALDO C LEITE          	|E
+
+
+## Etapas de produção dos projetos: 
+
+- Modelagem do banco de dados 
+- Desenvolvimento das entidades 
+- Definição das funcionalidades 
+- Definição dos contratos de entrada e saída de informação 
+- Desenvolvimento das funcionalidades 
+- Testes das funcionalidades  
+- Revisão e ajustes 
+- Documentação 
+
+## Funcionalidades:
+
+### Gerenciamentos de clientes
+
+> Consultar todos os clientes
+
+> Consultar um cliente específico  
+
+> Cadastrar um cliente 
+
+> Alterar informações de um cliente 
+
+> Excluir um cliente 
+
+### Gerenciamentos de pedidos
+
+> Consultar todos os pedidos 
+
+> Consultar um pedido específico  
+
+> Realizar um pedido 
+
+> Alterar um pedido 
+
+> Excluir um pedido 
+
+### Gerenciamentos de categorias de produtos
+
+> Consultar todas as categorias  
+
+> Consultar uma categoria específica  
+
+> Cadastro de categorias 
+
+> Alterar uma categoria  
+
+> Excluir uma categoria  
+
+### Gerenciamentos de produtos
+
+> Consultar todos os produtos 
+
+> Consultar um produto específica  
+
+> Cadastro de produtos 
+
+> Alterar um produto  
+
+> Excluir um produto 
+
+### Gerenciamentos de estoque 
+
+> Consultar o estoque 
+
+> Consultar um produto do estoque  
+
+> Alterar um produto do estoque 
+
+> Adicionar um produto ao estoque 
+
+> Excluir um produto do estoque  
+
+## Modelo de Dados:
+![](modelo.png)
+
+### Detalhes do modelo:
+Um cliente tem seu nome, sobrenome, gênero, e data de nascimento, além disso ele pode ter um ou mais telefones para contato e um ou mais endereços. 
+
+Cada cliente pode ter um ou mais pedidos de vendas, que além de data de criação e situação do pedido, possui um endereço para entrega e um ou mais produtos atrelados. 
+
+Cada item do pedido de venda tem obrigatóriamente um produto associado, assim como a quantidade solicitada e o preço referente ao valor do produto na data de criação do pedido. 
+
+Um produto além de poder estar em um ou mais pedidos, pode também pertencer a uma ou mais categorias. Todo produto ainda tem um nome, descrição, preço e está em um estoque de produtos. 
+
+Por fim, o estoque possui obrigatoriamente todos os produtos e sua quantidade. 
+
+## Outras informações
+
+### Testando a aplicação via Postman:
+Para testar os métodos da aplicação via Postman siga os passos a seguir:
+1. Realize a instalação do [programa](https://www.getpostman.com/downloads/).
+2. Após a instalação abra o aplicativo.
+3. Após o aplicativo abrir, siga as seguintes instruções:
+
+    3.1. Clique em **File** no menu de opções.
+  
+    3.2. Em seguida clique em **Import**.
+  
+    3.3. Tenha certeza de que a aba **Import File** está selecionada na janela que abrir, caso não esteja selecione-a.
+  
+    3.4. Clique no botão **Choose Files** na janela que será aberta.
+  
+    3.5. Escolha o arquivo ***"Trabalho de Persistência - 34SCJ.postman_collection.json"*** presente na raiz do projeto.
+
+4. Agora é só subir a aplicação e realizar as chamadas desejadas.
+ 
+### Tabelas de domínio:
+
+#### Tipo do endereço:
+
+| CÓDIGO 	| DESCRIÇÃO   	|
+|--------	|-------------	|
+| 1      	| RESIDENCIAL 	|
+| 2      	| COMERCIAL   	|
+| 3      	| ENTREGA     	|
+| 4      	| OUTROS      	|
+
+#### Situação do Pedido:
+
+| CÓDIGO 	| DESCRIÇÃO            	|
+|--------	|----------------------	|
+| 0      	| NOVO                 	|
+| 1      	| AGUARDANDO PAGAMENTO 	|
+| 2      	| EM SEPARAÇÃO         	|
+| 3      	| EM DESLOCAMENTO      	|
+| 4      	| ENTREGUE             	|
+
+### Repositório do projeto:
+
+#### [Github](https://github.com/ronaldoleitte1975/trabalho-final-persistencia-34scj)
