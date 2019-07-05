@@ -67,7 +67,7 @@ public class CategoryController {
     @RequestMapping(method = RequestMethod.POST, produces = "application/json", headers = "Accept=application/json")
     public ResponseEntity<CategoryResponse> createCategory(@RequestBody CategoryRequest categoryRequest) {
 
-        Category category = categoryService.addCategory(new Category(categoryRequest.getName()));
+        Category category = categoryService.createCategory(new Category(categoryRequest.getName()));
 
         return ResponseEntity
                 .created(URI.create(String.format("%s/%s", "/persistence/v1/category", category.getId())))

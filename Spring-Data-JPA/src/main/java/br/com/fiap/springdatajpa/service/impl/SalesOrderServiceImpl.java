@@ -34,7 +34,7 @@ public class SalesOrderServiceImpl implements SalesOrderService {
 	}
 
 	@Override
-	public SalesOrder addSalesOrder(SalesOrder salesOrder) {
+	public SalesOrder createSalesOrder(SalesOrder salesOrder) {
 		return salesOrderRepository.save(salesOrder);
 	}
 

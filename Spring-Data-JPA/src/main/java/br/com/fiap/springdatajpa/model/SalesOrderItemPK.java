@@ -17,13 +17,13 @@ public class SalesOrderItemPK implements Serializable {
 	private SalesOrder salesOrder;
 
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "inventory_id")
-	private Inventory inventory;
+	@JoinColumn(name = "product_id")
+	private Product product;
 
-	public SalesOrderItemPK(SalesOrder salesOrder, Inventory inventory) {
+	public SalesOrderItemPK(SalesOrder salesOrder, Product product) {
 		super();
 		this.salesOrder = salesOrder;
-		this.inventory = inventory;
+		this.product = product;
 	}
 
 	public SalesOrderItemPK() {
@@ -39,12 +39,12 @@ public class SalesOrderItemPK implements Serializable {
 		this.salesOrder = salesOrder;
 	}
 
-	public Inventory getInventory() {
-		return inventory;
+	public Product getProduct() {
+		return product;
 	}
 
-	public void setInventory(Inventory inventory) {
-		this.inventory = inventory;
+	public void setProduct(Product product) {
+		this.product = product;
 	}
 
 }

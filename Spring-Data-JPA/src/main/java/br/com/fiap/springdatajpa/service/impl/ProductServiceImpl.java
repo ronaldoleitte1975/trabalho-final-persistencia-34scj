@@ -44,7 +44,7 @@ public class ProductServiceImpl implements ProductService {
 	}
 
 	@Override
-	public Product addProduct(Product product) {
+	public Product createProduct(Product product) {
 		List<Integer> ids = new ArrayList<>();
 		product.getCategories().stream().forEach(category -> ids.add(category.getId()));
 		Optional<List<Category>> categories = categoryRepository.findByIdIn(ids);

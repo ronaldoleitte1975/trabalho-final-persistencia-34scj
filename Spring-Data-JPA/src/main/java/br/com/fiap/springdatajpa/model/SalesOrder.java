@@ -13,6 +13,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.SequenceGenerator;
 
 import br.com.fiap.springdatajpa.model.enums.SalesOrderStatus;
 
@@ -20,11 +21,12 @@ import br.com.fiap.springdatajpa.model.enums.SalesOrderStatus;
 public class SalesOrder {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue(generator = "generator", strategy = GenerationType.SEQUENCE)
+	@SequenceGenerator(initialValue = 1, name = "generator", sequenceName = "salesorder_sequence")
 	private Integer id;
 
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "custome_id")
+	@JoinColumn(name = "customer_id")
 	private Customer customer;
 
 	private Date createdDate;
@@ -36,6 +38,22 @@ public class SalesOrder {
 
 	@OneToMany(mappedBy = "id.salesOrder", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	private Set<SalesOrderItem> itens = new HashSet<>();
+
+	public SalesOrder(Customer customer, Date createdDate, SalesOrderStatus status, Address shipToAddress) {
+		this.customer = customer;
+		this.createdDate = createdDate;
+		this.status = (status == null) ? null : status.getCode();
+		this.shipToAddress = shipToAddress;
+	}
+
+	public SalesOrder(Customer customer, Date createdDate, SalesOrderStatus status, Address shipToAddress,
+					  Set<SalesOrderItem> itens) {
+		this.customer = customer;
+		this.createdDate = createdDate;
+		this.status = (status == null) ? null : status.getCode();
+		this.shipToAddress = shipToAddress;
+		this.itens = itens;
+	}
 
 	public SalesOrder(Integer id, Customer customer, Date createdDate, SalesOrderStatus status, Address shipToAddress,
 			Set<SalesOrderItem> itens) {
@@ -49,10 +67,7 @@ public class SalesOrder {
 	}	
 
 	public SalesOrder() {
-		super();
-		// TODO Auto-generated constructor stub
 	}
-
 
 	public Integer getId() {
 		return id;

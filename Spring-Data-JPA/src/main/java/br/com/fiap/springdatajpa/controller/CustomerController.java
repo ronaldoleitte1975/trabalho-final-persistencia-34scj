@@ -84,7 +84,7 @@ public class CustomerController {
 
         customerService.updateCustomer(new Customer(id, customerRequest.getName(), customerRequest.getSurname(),
                 toDate(customerRequest.getBirthDate()), customerRequest.getGender(),
-                toModelAddresses(customerRequest.getAdress()), toModelPhones(customerRequest.getPhones())));
+                toModelAddresses(id, customerRequest.getAdress()), toModelPhones(customerRequest.getPhones())));
 
         return ResponseEntity.noContent().build();
     }
@@ -92,9 +92,12 @@ public class CustomerController {
     @RequestMapping(method = RequestMethod.POST, produces = "application/json", headers = "Accept=application/json" )
     public ResponseEntity<CustomerResponse> createCustomer(@RequestBody CustomerRequest customerRequest){
 
-        Customer customer = customerService.addCustomer(new Customer(customerRequest.getName(), customerRequest.getSurname(),
-                toDate(customerRequest.getBirthDate()), customerRequest.getGender(),
-                toModelAddresses(customerRequest.getAdress()),  toModelPhones(customerRequest.getPhones())));
+        Customer customer = customerService.createCustomer(new Customer(customerRequest.getName(), customerRequest.getSurname(),
+                toDate(customerRequest.getBirthDate()), customerRequest.getGender(), toModelPhones(customerRequest.getPhones())));
+
+        customerService.updateCustomer(new Customer(customer.getId(), customer.getName(), customer.getSurname(), customer.getBirthDate(),
+                customer.getGender(), toModelAddresses(customer.getId(), customerRequest.getAdress()),
+                toModelPhones(customerRequest.getPhones())));
 
         return ResponseEntity
                 .created(URI.create(String.format("%s/%s", "/persistence/v1/customer", customer.getId())))
@@ -129,11 +132,12 @@ public class CustomerController {
         return phonesModel;
     }
 
-    private Set<Address> toModelAddresses(List<AddressDTO> addressDTO) {
+    private Set<Address> toModelAddresses(Integer id, List<AddressDTO> addressDTO) {
+        Customer customer = this.customerService.getCustomerById(id);
         Set<Address> addressModel = new HashSet<>();
-        addressDTO.stream().forEach(address -> addressModel.add(new Address(
-                address.getStreetName(), address.getNumber(), address.getComplement(), address.getPostalCode(),
-                address.getCity(), address.getProvince(), address.getCountry(), AddressType.toEnum(address.getType())
+        addressDTO.stream().forEach(address -> addressModel.add(new Address(address.getStreetName(),
+                address.getNumber(), address.getComplement(), address.getPostalCode(), address.getCity(),
+                address.getProvince(), address.getCountry(), customer, AddressType.toEnum(address.getType())
         )));
         return addressModel;
     }
