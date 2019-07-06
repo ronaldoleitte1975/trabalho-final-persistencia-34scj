@@ -1,7 +1,7 @@
 package br.com.fiap.springdatajpa.controller;
 
 import br.com.fiap.springdatajpa.dto.inventory.InventoryRequest;
-import br.com.fiap.springdatajpa.dto.inventory.InventoryResponse;;
+import br.com.fiap.springdatajpa.dto.inventory.InventoryResponse;
 import br.com.fiap.springdatajpa.dto.inventory.InventoryUpdateRequest;
 import br.com.fiap.springdatajpa.model.Inventory;
 import br.com.fiap.springdatajpa.model.Product;
