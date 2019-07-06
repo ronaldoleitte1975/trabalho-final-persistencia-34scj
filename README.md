@@ -5,7 +5,7 @@
 | RM     	| NOME                     	|
 |--------	|--------------------------	|
 | 334242 	| BRUNO DELPHINO ZAMBOTTI  	|
-|        	| DIEGO LANDI RIBEIRO      	|
+| 333554  	| DIEGO LANDI RIBEIRO      	|
 | 333906 	| EDUARDO MATOSO DE LIMA   	|
 | 333792 	| FERNANDA LEMBO VEDOVELLO 	|
 | 333788 	| GIOVANI SILVA            	|
