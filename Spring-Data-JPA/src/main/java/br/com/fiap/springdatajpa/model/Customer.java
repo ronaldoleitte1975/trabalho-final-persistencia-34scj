@@ -21,6 +21,9 @@ import javax.persistence.SequenceGenerator;
 @Entity
 public class Customer {
 
+	/**
+	 * A tabela possui uma sequence para que sua chave sequencial não entre em conflitos com as demais chaves do banco
+	 */
 	@Id
 	@GeneratedValue(generator = "generator", strategy = GenerationType.SEQUENCE)
 	@SequenceGenerator(initialValue = 1, name = "generator", sequenceName = "customer_sequence")
@@ -32,7 +35,7 @@ public class Customer {
 	private Date birthDate;
 	private char gender;
 
-	@OneToMany(mappedBy = "cliente", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	@OneToMany(mappedBy = "customer", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	private Set<Address> address = new HashSet<>();
 
 	@ElementCollection

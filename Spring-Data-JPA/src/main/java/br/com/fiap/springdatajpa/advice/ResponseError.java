@@ -3,6 +3,9 @@ package br.com.fiap.springdatajpa.advice;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.springframework.http.HttpStatus;
 
+/**
+ * Exception padrão para normalizar o response em caso de exceções e validações
+ */
 public class ResponseError extends RuntimeException {
 
     @JsonIgnore

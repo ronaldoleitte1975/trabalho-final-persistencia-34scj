@@ -1,8 +1,13 @@
 package br.com.fiap.springdatajpa.dto.inventory;
 
+import javax.validation.constraints.NotNull;
+
 public class InventoryRequest {
 
+    @NotNull
     private Integer productId;
+
+    @NotNull
     private Integer amount;
 
     public Integer getProductId() {

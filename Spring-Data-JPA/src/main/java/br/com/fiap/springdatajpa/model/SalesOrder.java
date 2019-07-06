@@ -6,6 +6,8 @@ import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -14,15 +16,20 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
+import javax.persistence.Table;
 
 import br.com.fiap.springdatajpa.model.enums.SalesOrderStatus;
 
 @Entity
+@Table(name="sales_order")
 public class SalesOrder {
 
+	/**
+	 * A tabela possui uma sequence para que sua chave sequencial não entre em conflitos com as demais chaves do banco
+	 */
 	@Id
 	@GeneratedValue(generator = "generator", strategy = GenerationType.SEQUENCE)
-	@SequenceGenerator(initialValue = 1, name = "generator", sequenceName = "salesorder_sequence")
+	@SequenceGenerator(initialValue = 1, name = "generator", sequenceName = "sales_order_sequence")
 	private Integer id;
 
 	@ManyToOne(fetch = FetchType.LAZY)
@@ -30,7 +37,9 @@ public class SalesOrder {
 	private Customer customer;
 
 	private Date createdDate;
-	private Integer status;
+
+	@Enumerated(EnumType.STRING)
+	private SalesOrderStatus status;
 
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "ship_to_address_id")
@@ -42,7 +51,7 @@ public class SalesOrder {
 	public SalesOrder(Customer customer, Date createdDate, SalesOrderStatus status, Address shipToAddress) {
 		this.customer = customer;
 		this.createdDate = createdDate;
-		this.status = (status == null) ? null : status.getCode();
+		this.status = status;
 		this.shipToAddress = shipToAddress;
 	}
 
@@ -50,7 +59,7 @@ public class SalesOrder {
 					  Set<SalesOrderItem> itens) {
 		this.customer = customer;
 		this.createdDate = createdDate;
-		this.status = (status == null) ? null : status.getCode();
+		this.status = status;
 		this.shipToAddress = shipToAddress;
 		this.itens = itens;
 	}
@@ -61,7 +70,7 @@ public class SalesOrder {
 		this.id = id;
 		this.customer = customer;
 		this.createdDate = createdDate;
-		this.status = (status == null) ? null : status.getCode();
+		this.status = status;
 		this.shipToAddress = shipToAddress;
 		this.itens = itens;
 	}	
@@ -93,11 +102,11 @@ public class SalesOrder {
 		this.createdDate = createdDate;
 	}
 
-	public Integer getStatus() {
+	public SalesOrderStatus getStatus() {
 		return status;
 	}
 
-	public void setStatus(Integer status) {
+	public void setStatus(SalesOrderStatus status) {
 		this.status = status;
 	}
 

@@ -2,6 +2,8 @@ package br.com.fiap.springdatajpa.model;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -14,6 +16,9 @@ import br.com.fiap.springdatajpa.model.enums.AddressType;
 @Entity
 public class Address {
 
+	/**
+	 * A chave é gerada de forma automática, pois não a necessidade de gerenciamento do id
+	 */
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column
@@ -29,9 +34,10 @@ public class Address {
 
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "customer_id")
-	private Customer cliente;
-	
-	private Integer type;
+	private Customer customer;
+
+	@Enumerated(EnumType.STRING)
+	private AddressType type;
 
 	public Address(){}
 
@@ -45,11 +51,11 @@ public class Address {
 		this.city = city;
 		this.province = province;
 		this.country = country;
-		this.type = (type == null) ? null : type.getCode();
+		this.type = type;
 	}
 
 	public Address(String street, Integer number, String complement, String postalCode, String city,
-				   String province, String country, Customer cliente, AddressType type) {
+				   String province, String country, Customer customer, AddressType type) {
 		this.street = street;
 		this.number = number;
 		this.complement = complement;
@@ -57,12 +63,12 @@ public class Address {
 		this.city = city;
 		this.province = province;
 		this.country = country;
-		this.cliente = cliente;
-		this.type = (type == null) ? null : type.getCode();
+		this.customer = customer;
+		this.type = type;
 	}
 
 	public Address(Integer id, String street, Integer number, String complement, String postalCode, String city,
-				   String province, String country, Customer cliente, AddressType type) {
+				   String province, String country, Customer customer, AddressType type) {
 		super();
 		this.id = id;
 		this.street = street;
@@ -72,8 +78,8 @@ public class Address {
 		this.city = city;
 		this.province = province;
 		this.country = country;
-		this.cliente = cliente;
-		this.type = (type == null) ? null : type.getCode();
+		this.customer = customer;
+		this.type = type;
 	}
 
 	public Integer getId() {
@@ -140,20 +146,18 @@ public class Address {
 		this.country = country;
 	}
 
-	public Customer getCliente() {
-		return cliente;
+	public Customer getCustomer() {
+		return customer;
 	}
 
-	public void setCliente(Customer cliente) {
-		this.cliente = cliente;
+	public void setCustomer(Customer cliente) {
+		this.customer = cliente;
 	}
 
-	public AddressType getType() {
-		return AddressType.toEnum(type);
-	}
+	public AddressType getType() { return type;	}
 
 	public void setType(AddressType type) {
-		this.type = type.getCode();
+		this.type = type;
 	}
 	
 	

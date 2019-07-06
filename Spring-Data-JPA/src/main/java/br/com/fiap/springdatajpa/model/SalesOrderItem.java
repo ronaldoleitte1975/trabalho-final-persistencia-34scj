@@ -2,8 +2,10 @@ package br.com.fiap.springdatajpa.model;
 
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
+import javax.persistence.Table;
 
 @Entity
+@Table(name="sales_order_item")
 public class SalesOrderItem {
 
 	@EmbeddedId
@@ -26,11 +28,7 @@ public class SalesOrderItem {
 	}	
 
 	public SalesOrderItem() {
-		super();
-		// TODO Auto-generated constructor stub
 	}
-
-
 
 	public SalesOrderItemPK getId() {
 		return id;
