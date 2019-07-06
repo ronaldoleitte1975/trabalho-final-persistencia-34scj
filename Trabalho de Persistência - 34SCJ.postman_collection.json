@@ -66,7 +66,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n\t\"name\": \"name\",\r\n\t\"surname\": \"surname\",\r\n\t\"birthDate\": \"12/10/1981\",\r\n\t\"gender\": \"M\",\r\n\t\"adress\": [{\r\n\t\t\t\"streetName\": \"streetName\",\r\n\t\t\t\"number\": 1,\r\n\t\t\t\"complement\": \"complement\",\r\n\t\t\t\"postalCode\": \"03325885\",\r\n\t\t\t\"city\": \"city\",\r\n\t\t\t\"province\": \"province\",\r\n\t\t\t\"country\": \"country\",\r\n\t\t\t\"type\": 1\r\n\t\t},\r\n\t\t{\r\n\t\t\t\"streetName\": \"streetName\",\r\n\t\t\t\"number\": 2,\r\n\t\t\t\"complement\": \"complement\",\r\n\t\t\t\"postalCode\": \"03325885\",\r\n\t\t\t\"city\": \"city\",\r\n\t\t\t\"province\": \"province\",\r\n\t\t\t\"country\": \"country\",\r\n\t\t\t\"type\": 1\r\n\t\t}\r\n\t],\r\n\t\"phones\": [{\r\n\t\t\t\"number\": \"988562245\"\r\n\t\t},\r\n\t\t{\r\n\t\t\t\"number\": \"25699785\"\r\n\t\t}\r\n\t]\r\n}"
+							"raw": "{\r\n\t\"name\": \"name\",\r\n\t\"surname\": \"surname\",\r\n\t\"birthDate\": \"12/10/1981\",\r\n\t\"gender\": \"M\",\r\n\t\"adress\": [{\r\n\t\t\t\"streetName\": \"streetName\",\r\n\t\t\t\"number\": 1,\r\n\t\t\t\"complement\": \"complement\",\r\n\t\t\t\"postalCode\": \"03325885\",\r\n\t\t\t\"city\": \"city\",\r\n\t\t\t\"province\": \"province\",\r\n\t\t\t\"country\": \"country\",\r\n\t\t\t\"type\": 1\r\n\t\t},\r\n\t\t{\r\n\t\t\t\"streetName\": \"streetName\",\r\n\t\t\t\"number\": 2,\r\n\t\t\t\"complement\": \"complement\",\r\n\t\t\t\"postalCode\": \"03325885\",\r\n\t\t\t\"city\": \"city\",\r\n\t\t\t\"province\": \"province\",\r\n\t\t\t\"country\": \"country\",\r\n\t\t\t\"type\": 2\r\n\t\t}\r\n\t],\r\n\t\"phones\": [{\r\n\t\t\t\"number\": \"988562245\"\r\n\t\t},\r\n\t\t{\r\n\t\t\t\"number\": \"25699785\"\r\n\t\t}\r\n\t]\r\n}"
 						},
 						"url": {
 							"raw": "http://localhost:8085/persistence/v1/customer",
@@ -352,7 +352,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n\t\"name\":\"name\",\n\t\"description\":\"description\",\n    \"price\": 54.0,\n    \"categories\": [\n    \t{ \"id\": 16 }\n    ]\n}"
+							"raw": "{\n\t\"name\":\"name\",\n\t\"description\":\"description\",\n    \"price\": 54.0,\n    \"categories\": [\n    \t{ \"id\": 1 }\n    ]\n}"
 						},
 						"url": {
 							"raw": "http://localhost:8085/persistence/v1/product",
@@ -541,7 +541,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n\t\"customerId\": 1,\r\n\t\"status\": 1,\r\n\t\"itens\": [\r\n\t\t{ \"productId\": 1, \"quantity\": 2 },\r\n\t\t{ \"productId\": 2, \"quantity\": 2 }\r\n\t]\r\n}"
+							"raw": "{\r\n\t\"customerId\": 1,\r\n\t\"itens\": [\r\n\t\t{ \"productId\": 1, \"quantity\": 2 }\r\n\t]\r\n}"
 						},
 						"url": {
 							"raw": "http://localhost:8085/persistence/v1/salesOrder",
