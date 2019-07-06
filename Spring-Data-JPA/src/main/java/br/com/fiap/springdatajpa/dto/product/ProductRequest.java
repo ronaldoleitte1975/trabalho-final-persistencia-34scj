@@ -2,13 +2,21 @@ package br.com.fiap.springdatajpa.dto.product;
 
 import br.com.fiap.springdatajpa.dto.category.CategoryDTO;
 
+import javax.validation.constraints.NotNull;
 import java.util.List;
 
 public class ProductRequest {
 
+    @NotNull
     private String name;
+
+    @NotNull
     private String description;
+
+    @NotNull
     private Double price;
+
+    @NotNull
     private List<CategoryDTO> categories;
 
     public String getName() {

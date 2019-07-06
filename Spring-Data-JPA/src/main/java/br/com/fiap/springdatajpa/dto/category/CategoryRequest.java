@@ -1,6 +1,9 @@
 package br.com.fiap.springdatajpa.dto.category;
 
+import javax.validation.constraints.NotNull;
+
 public class CategoryRequest {
+    @NotNull
     private String name;
 
     public CategoryRequest() {

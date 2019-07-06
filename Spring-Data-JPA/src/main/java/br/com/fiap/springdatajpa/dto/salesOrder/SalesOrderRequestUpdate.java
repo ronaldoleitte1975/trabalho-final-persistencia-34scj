@@ -1,13 +1,10 @@
 package br.com.fiap.springdatajpa.dto.salesOrder;
 
-import javax.validation.constraints.NotNull;
 import java.util.List;
 
-public class SalesOrderRequest {
-    @NotNull
+public class SalesOrderRequestUpdate {
     private Integer customerId;
-
-    @NotNull
+    private Integer status;
     private List<ProductDTO> itens;
 
     public Integer getCustomerId() {
@@ -17,6 +14,10 @@ public class SalesOrderRequest {
     public void setCustomerId(Integer customerId) {
         this.customerId = customerId;
     }
+
+    public Integer getStatus() { return status; }
+
+    public void setStatus(Integer status) { this.status = status; }
 
     public List<ProductDTO> getItens() {
         return itens;

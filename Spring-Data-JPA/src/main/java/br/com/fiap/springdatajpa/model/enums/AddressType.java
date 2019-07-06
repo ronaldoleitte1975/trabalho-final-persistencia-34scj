@@ -2,17 +2,20 @@ package br.com.fiap.springdatajpa.model.enums;
 
 public enum AddressType {
 
-	RESIDENCIAL(1, "Residencial"), COMERCIAL(2, "Comercial"), ENTREGA(3, "Entrega"), OUTROS(4, "Outros");
+	RESIDENCIAL(1, "Residencial"),
+	COMERCIAL(2, "Comercial"),
+	ENTREGA(3, "Entrega"),
+	OUTROS(4, "Outros");
 
 	private int code;
 
-	private String descr;
+	private String description;
 
-	private AddressType(int code, String descr) {
+	private AddressType(int code, String description) {
 
 		this.code = code;
 
-		this.descr = descr;
+		this.description = description;
 
 	}
 
@@ -22,9 +25,9 @@ public enum AddressType {
 
 	}
 
-	public String getdescr() {
+	public String getDescription() {
 
-		return descr;
+		return description;
 
 	}
 

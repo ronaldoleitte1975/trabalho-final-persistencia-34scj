@@ -5,10 +5,10 @@ import java.util.List;
 public class SalesOrderResponse {
     private Integer id;
     private Integer customerId;
-    private Integer status;
+    private String status;
     private List<ProductDTO> itens;
 
-    public SalesOrderResponse(Integer id, Integer customerId, Integer status, List<ProductDTO> itens) {
+    public SalesOrderResponse(Integer id, Integer customerId, String status, List<ProductDTO> itens) {
         this.id = id;
         this.customerId = customerId;
         this.status = status;
@@ -31,11 +31,11 @@ public class SalesOrderResponse {
         this.customerId = customerId;
     }
 
-    public Integer getStatus() {
+    public String getStatus() {
         return status;
     }
 
-    public void setStatus(Integer status) {
+    public void setStatus(String status) {
         this.status = status;
     }
 

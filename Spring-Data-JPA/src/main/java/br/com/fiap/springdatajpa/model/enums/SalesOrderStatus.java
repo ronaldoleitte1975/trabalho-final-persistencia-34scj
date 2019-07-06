@@ -2,18 +2,21 @@ package br.com.fiap.springdatajpa.model.enums;
 
 public enum SalesOrderStatus {
 
-	NOVO(0, "Novo"), AGUARDANDO_PAGAMENTO(1, "AguardandoPagamento"), EM_SEPARACAO(2, "EmSeparacao"),
-	EM_DESLOCAMENTO(3, "EmDeslocamento"), ENTREGUE(4, "Entregue");
+	NOVO(0, "NOVO"),
+	AGUARDANDO_PAGAMENTO(1, "AGUARDANDO PAGAMENTO"),
+	EM_SEPARACAO(2, "EM SEPARAÇÃO"),
+	EM_DESLOCAMENTO(3, "EM DESLOCAMENTO"),
+	ENTREGUE(4, "ENTREGUE");
 
 	private int code;
 
-	private String descr;
+	private String description;
 
-	private SalesOrderStatus(int code, String descr) {
+	private SalesOrderStatus(int code, String description) {
 
 		this.code = code;
 
-		this.descr = descr;
+		this.description = description;
 
 	}
 
@@ -23,9 +26,9 @@ public enum SalesOrderStatus {
 
 	}
 
-	public String getdescr() {
+	public String getDescription() {
 
-		return descr;
+		return description;
 
 	}
 

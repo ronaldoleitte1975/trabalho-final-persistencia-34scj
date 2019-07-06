@@ -27,8 +27,6 @@ public class SalesOrderItemPK implements Serializable {
 	}
 
 	public SalesOrderItemPK() {
-		super();
-		// TODO Auto-generated constructor stub
 	}
 
 	public SalesOrder getSalesOrder() {

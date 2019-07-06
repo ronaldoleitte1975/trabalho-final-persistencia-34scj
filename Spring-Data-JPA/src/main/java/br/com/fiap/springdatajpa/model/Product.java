@@ -18,7 +18,10 @@ import javax.persistence.SequenceGenerator;
 
 @Entity
 public class Product {
-	
+
+	/**
+	 * A tabela possui uma sequence para que sua chave sequencial não entre em conflitos com as demais chaves do banco
+	 */
 	@Id
 	@GeneratedValue(generator = "generator", strategy = GenerationType.SEQUENCE)
 	@SequenceGenerator(initialValue = 1, name = "generator", sequenceName = "product_sequence")

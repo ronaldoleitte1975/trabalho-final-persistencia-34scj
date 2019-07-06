@@ -120,7 +120,24 @@ Para testar os métodos da aplicação via Postman siga os passos a seguir:
     3.5. Escolha o arquivo ***"Trabalho de Persistência - 34SCJ.postman_collection.json"*** presente na raiz do projeto.
 
 4. Agora é só subir a aplicação e realizar as chamadas desejadas.
- 
+
+#### Fluxo recomendado para teste:
+Para realizar um teste integrado e completo, um dos fluxos recomendados é o seguinte:
+
+1. Cadastre um categoria de produto, por meio da request do postman *"createCategory"*.
+
+2. Cadastre um produto por meio da request do postman *"createProduct"* passando a categoria criada anteriormente como um dos elementos do corpo da requisição.
+
+3. Adicione o produto criado e a quantidade desejada no estoque por meio da request do postman *"createInventoryItemByProductId"*.
+
+4. Cadastre um novo cliente por meio da request do postman *"createCustomer"*.
+
+5. Gere um pedido, informando o cliente e o produto criados anteriormente, por meio da request do postman *"createSalesOrder"*.
+
+6. Consulte o pedido, por meio da request do postman *"getStalesOrdersById"*, informando o id gerado no passo anterior.
+
+7. Consulte o estoque pelo produto que foi associado ao pedido para verificar que o estoque foi sensibilizado com a efetivação do pedido por meio da request do postman *"getInventoryByProductId"*.
+
 ### Tabelas de domínio:
 
 #### Tipo do endereço:

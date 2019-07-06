@@ -1,14 +1,26 @@
 package br.com.fiap.springdatajpa.dto.customer;
 
+import javax.validation.constraints.NotNull;
 import java.util.List;
 
 public class CustomerRequest {
 
+    @NotNull
     private String name;
+
+    @NotNull
     private String surname;
+
+    @NotNull
     private String birthDate;
+
+    @NotNull
     private char gender;
+
+    @NotNull
     private List<AddressDTO> adress;
+
+    @NotNull
     private List<PhoneDTO> phones;
 
     public String getName() {
