@@ -11,7 +11,7 @@
 | 333788 	| GIOVANI SILVA            	|
 | 334110 	| HENRIQUE SUEL DA SILVA   	|
 | 334151 	| MARCELO ZANI             	|
-| 333515 	| RONALDO C LEITE          	|E
+| 333515 	| RONALDO CERQUEIRA LEITE   |
 
 
 ## Etapas de produção dos projetos: 
