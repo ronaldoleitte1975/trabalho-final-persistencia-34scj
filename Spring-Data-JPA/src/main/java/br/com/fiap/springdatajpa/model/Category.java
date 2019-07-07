@@ -26,6 +26,9 @@ public class Category {
 	
 	private String name;
 	
+	/* Especificando que a tabela categorias tem um relacionamento muitos
+	*  para muitos com a tabela products
+	*/
 	@ManyToMany(fetch = FetchType.LAZY, mappedBy = "categories")
 	private List<Product> products = new ArrayList<Product>();
 

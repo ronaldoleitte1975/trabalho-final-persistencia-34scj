@@ -17,7 +17,8 @@ import br.com.fiap.springdatajpa.model.enums.AddressType;
 public class Address {
 
 	/**
-	 * A chave é gerada de forma automática, pois não a necessidade de gerenciamento do id
+	 * A chave é gerada de forma automática, pois não a necessidade de 
+	 * gerenciamento do id
 	 */
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -32,10 +33,13 @@ public class Address {
 	private String province;
 	private String country;
 
+	/* Criando um relacionamento de Muito para um */
 	@ManyToOne(fetch = FetchType.EAGER)
+	/* A coluna customer_id vai ingressar em uma associação de entidade */
 	@JoinColumn(name = "customer_id")
 	private Customer customer;
 
+	/* O campo Type sera persistido como um tipo enumerado */
 	@Enumerated(EnumType.STRING)
 	private AddressType type;
 

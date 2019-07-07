@@ -35,13 +35,18 @@ public class Customer {
 	private Date birthDate;
 	private char gender;
 
+	/* Criando um relacionamento de um para muitos com endereço */
 	@OneToMany(mappedBy = "customer", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	private Set<Address> address = new HashSet<>();
 
+	/* A coleção deve ser mapeada por meio de uma tabela coletora,
+	*  Com um relacionamento com a tabela customer de um para muitos com 
+	*  a tabela Phone */
 	@ElementCollection
 	@CollectionTable(name = "PHONE")
 	private Set<String> phones = new HashSet<>();
 
+	/* Criando uma relacionamento de um para muitos com a salesOrders */
 	@OneToMany(mappedBy = "customer", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	private List<SalesOrder> salesOrders = new ArrayList<>();
 
