@@ -20,8 +20,7 @@ import javax.persistence.SequenceGenerator;
 public class Product {
 
 	/**
-	 * A tabela possui uma sequence para que sua chave sequencial não entre em
-	 * conflitos com as demais chaves do banco
+	 * A chave será  gerada de forma automática pelo gerenciador do hibernate, utilizando uma tabela de sequence própria.
 	 */
 	@Id
 	@GeneratedValue(generator = "generator", strategy = GenerationType.SEQUENCE)

@@ -25,8 +25,7 @@ import br.com.fiap.springdatajpa.model.enums.SalesOrderStatus;
 public class SalesOrder {
 
 	/**
-	 * A tabela possui uma sequence para que sua chave sequencial não entre em
-	 * conflitos com as demais chaves do banco
+	 * A chave será  gerada de forma automática pelo gerenciador do hibernate, utilizando uma tabela de sequence própria.
 	 */
 	@Id
 	@GeneratedValue(generator = "generator", strategy = GenerationType.SEQUENCE)
@@ -34,7 +33,7 @@ public class SalesOrder {
 	private Integer id;
 
 	/*
-	 * A coluna customer_Id é uma FK na tabela
+	 * A coluna customer_Id é uma FK da tabela Customer referente a um relacionamento de muitos para um.
 	 */
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "customer_id")
@@ -46,12 +45,12 @@ public class SalesOrder {
 	@Enumerated(EnumType.STRING)
 	private SalesOrderStatus status;
 
-	/* A coluna ship_to_address_id é uma FK na tabela */
+	/* Coluna referente ao endereço de entrega do pedido: ship_to_address_id que é uma FK da tabela Address referente a um relacionamento de muitos para um*/
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "ship_to_address_id")
 	private Address shipToAddress;
 
-	/* Criando um relacionamento de um para muitos com a tabela sales_order_item */
+	/* Criando um relacionamento de um para muitos com a tabela sales_order_item atraves da PK id.salesOrderId*/
 	@OneToMany(mappedBy = "id.salesOrder", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	private Set<SalesOrderItem> itens = new HashSet<>();
 

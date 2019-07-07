@@ -17,8 +17,7 @@ import br.com.fiap.springdatajpa.model.enums.AddressType;
 public class Address {
 
 	/**
-	 * A chave é gerada de forma automática, pois não a necessidade de 
-	 * gerenciamento do id
+	 * A chave é gerada de forma automática pelo gerenciador do hibernate, utilizando uma tabela de sequence generalista.
 	 */
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
