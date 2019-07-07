@@ -21,30 +21,37 @@ import javax.persistence.Table;
 import br.com.fiap.springdatajpa.model.enums.SalesOrderStatus;
 
 @Entity
-@Table(name="sales_order")
+@Table(name = "sales_order")
 public class SalesOrder {
 
 	/**
-	 * A tabela possui uma sequence para que sua chave sequencial não entre em conflitos com as demais chaves do banco
+	 * A tabela possui uma sequence para que sua chave sequencial não entre em
+	 * conflitos com as demais chaves do banco
 	 */
 	@Id
 	@GeneratedValue(generator = "generator", strategy = GenerationType.SEQUENCE)
 	@SequenceGenerator(initialValue = 1, name = "generator", sequenceName = "sales_order_sequence")
 	private Integer id;
 
+	/*
+	 * A coluna customer_Id é uma FK na tabela
+	 */
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "customer_id")
 	private Customer customer;
 
 	private Date createdDate;
 
+	/* O campo Type sera persistido como um tipo enumerado */
 	@Enumerated(EnumType.STRING)
 	private SalesOrderStatus status;
 
+	/* A coluna ship_to_address_id é uma FK na tabela */
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "ship_to_address_id")
 	private Address shipToAddress;
 
+	/* Criando um relacionamento de um para muitos com a tabela sales_order_item */
 	@OneToMany(mappedBy = "id.salesOrder", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	private Set<SalesOrderItem> itens = new HashSet<>();
 
@@ -56,7 +63,7 @@ public class SalesOrder {
 	}
 
 	public SalesOrder(Customer customer, Date createdDate, SalesOrderStatus status, Address shipToAddress,
-					  Set<SalesOrderItem> itens) {
+			Set<SalesOrderItem> itens) {
 		this.customer = customer;
 		this.createdDate = createdDate;
 		this.status = status;
@@ -73,7 +80,7 @@ public class SalesOrder {
 		this.status = status;
 		this.shipToAddress = shipToAddress;
 		this.itens = itens;
-	}	
+	}
 
 	public SalesOrder() {
 	}

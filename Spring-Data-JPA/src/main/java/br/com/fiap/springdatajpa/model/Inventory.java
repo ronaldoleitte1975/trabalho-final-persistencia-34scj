@@ -24,6 +24,7 @@ public class Inventory {
 
 	private Integer amount;
 
+	/* Criando um relacionamento de um para um com a tabela product */
 	@OneToOne(fetch = FetchType.LAZY, mappedBy = "inventory", cascade = CascadeType.ALL)
 	private Product product;
 

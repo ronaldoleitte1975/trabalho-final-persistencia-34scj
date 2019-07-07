@@ -20,22 +20,32 @@ import javax.persistence.SequenceGenerator;
 public class Product {
 
 	/**
-	 * A tabela possui uma sequence para que sua chave sequencial não entre em conflitos com as demais chaves do banco
+	 * A tabela possui uma sequence para que sua chave sequencial não entre em
+	 * conflitos com as demais chaves do banco
 	 */
 	@Id
 	@GeneratedValue(generator = "generator", strategy = GenerationType.SEQUENCE)
 	@SequenceGenerator(initialValue = 1, name = "generator", sequenceName = "product_sequence")
 	@Column
 	private Integer id;
-	
-	private String name;	
+
+	private String name;
 	private String description;
 	private Double price;
-	
+
+	/*
+	 * Criando um relacionamento de muitos para muitos com a tabela categoria com
+	 * isso sera criado uma tabela automática relacionando as duas tabelas somente
+	 * com as PK de ambas que na tabela sera FK
+	 */
+
 	@ManyToMany(fetch = FetchType.LAZY)
 	@JoinTable(name = "product_category", joinColumns = @JoinColumn(name = "product_id"), inverseJoinColumns = @JoinColumn(name = "category_id"))
 	private List<Category> categories = new ArrayList<Category>();
 
+	/*
+	 * Criando um relacionamento de um para um com a tabela product_inventory
+	 */
 	@OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.MERGE)
 	@JoinTable(name = "product_inventory", joinColumns = @JoinColumn(name = "product_id"), inverseJoinColumns = @JoinColumn(name = "inventory_id"))
 	private Inventory inventory;
@@ -54,14 +64,12 @@ public class Product {
 		this.description = description;
 		this.price = price;
 		this.categories = categories;
-	}	
+	}
 
 	public Product() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-
-
 
 	public Integer getId() {
 		return id;
