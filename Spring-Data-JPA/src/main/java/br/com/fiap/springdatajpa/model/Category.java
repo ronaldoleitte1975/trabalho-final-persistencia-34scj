@@ -16,19 +16,20 @@ import javax.persistence.SequenceGenerator;
 public class Category {
 
 	/**
-	 * A tabela possui uma sequence para que sua chave sequencial não entre em conflitos com as demais chaves do banco
+	 * A tabela possui uma sequence para que sua chave sequencial não entre em
+	 * conflitos com as demais chaves do banco
 	 */
 	@Id
 	@GeneratedValue(generator = "generator", strategy = GenerationType.SEQUENCE)
 	@SequenceGenerator(initialValue = 1, name = "generator", sequenceName = "category_sequence")
 	@Column
 	private Integer id;
-	
+
 	private String name;
-	
-	/* Especificando que a tabela categorias tem um relacionamento muitos
-	*  para muitos com a tabela products
-	*/
+
+	/*
+	 * Criando um relacionamento de muitos para muitos com a tabela products
+	 */
 	@ManyToMany(fetch = FetchType.LAZY, mappedBy = "categories")
 	private List<Product> products = new ArrayList<Product>();
 
@@ -50,14 +51,12 @@ public class Category {
 		this.id = id;
 		this.name = name;
 		this.products = products;
-	}	
+	}
 
 	public Category() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-
-
 
 	public Integer getId() {
 		return id;
@@ -81,7 +80,6 @@ public class Category {
 
 	public void setProducts(List<Product> products) {
 		this.products = products;
-	}	
-
+	}
 
 }

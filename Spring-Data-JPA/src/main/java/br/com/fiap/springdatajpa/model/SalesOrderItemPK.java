@@ -12,12 +12,12 @@ public class SalesOrderItemPK implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
-	/* Criando um relacioamento de muitos para um com sales_order */
+	/* Criando um relacionamento de muitos para um com sales_order */
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "sales_order_id")
 	private SalesOrder salesOrder;
 
-	/* Criando um relacioamento de muitos para um com product */
+	/* Criando um relacionamento de muitos para um com product */
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "product_id")
 	private Product product;

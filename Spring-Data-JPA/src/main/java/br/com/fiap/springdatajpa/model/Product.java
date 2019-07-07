@@ -44,7 +44,7 @@ public class Product {
 	private List<Category> categories = new ArrayList<Category>();
 
 	/*
-	 * Relacionamento de um para um com a tabela product_inventory
+	 * Criando um relacionamento de um para um com a tabela product_inventory
 	 */
 	@OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.MERGE)
 	@JoinTable(name = "product_inventory", joinColumns = @JoinColumn(name = "product_id"), inverseJoinColumns = @JoinColumn(name = "inventory_id"))

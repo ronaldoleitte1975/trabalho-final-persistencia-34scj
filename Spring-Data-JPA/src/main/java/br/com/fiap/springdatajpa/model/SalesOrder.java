@@ -51,7 +51,7 @@ public class SalesOrder {
 	@JoinColumn(name = "ship_to_address_id")
 	private Address shipToAddress;
 
-	/* Relacionamento de tabela de um para muitos com a sales_order_item */
+	/* Criando um relacionamento de um para muitos com a tabela sales_order_item */
 	@OneToMany(mappedBy = "id.salesOrder", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	private Set<SalesOrderItem> itens = new HashSet<>();
 

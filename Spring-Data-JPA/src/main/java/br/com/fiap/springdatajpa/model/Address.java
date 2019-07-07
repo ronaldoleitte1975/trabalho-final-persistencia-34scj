@@ -33,7 +33,7 @@ public class Address {
 	private String province;
 	private String country;
 
-	/* Criando um relacionamento de Muito para um */
+	/* Criando um relacionamento de muitos para um */
 	@ManyToOne(fetch = FetchType.EAGER)
 	/* A coluna customer_id vai ingressar em uma associação de entidade */
 	@JoinColumn(name = "customer_id")

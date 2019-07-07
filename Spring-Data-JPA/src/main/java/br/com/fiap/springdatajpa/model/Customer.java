@@ -22,7 +22,8 @@ import javax.persistence.SequenceGenerator;
 public class Customer {
 
 	/**
-	 * A tabela possui uma sequence para que sua chave sequencial não entre em conflitos com as demais chaves do banco
+	 * A tabela possui uma sequence para que sua chave sequencial não entre em
+	 * conflitos com as demais chaves do banco
 	 */
 	@Id
 	@GeneratedValue(generator = "generator", strategy = GenerationType.SEQUENCE)
@@ -39,9 +40,10 @@ public class Customer {
 	@OneToMany(mappedBy = "customer", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	private Set<Address> address = new HashSet<>();
 
-	/* A coleção deve ser mapeada por meio de uma tabela coletora,
-	*  Com um relacionamento com a tabela customer de um para muitos com 
-	*  a tabela Phone */
+	/*
+	 * Criando um relacionamento de um para muitos com a tabela
+	 * Phone
+	 */
 	@ElementCollection
 	@CollectionTable(name = "PHONE")
 	private Set<String> phones = new HashSet<>();
@@ -61,8 +63,7 @@ public class Customer {
 		this.phones = phones;
 	}
 
-	public Customer(String name, String surname, Date birthDate, char gender, Set<Address> address,
-					Set<String> phones) {
+	public Customer(String name, String surname, Date birthDate, char gender, Set<Address> address, Set<String> phones) {
 		this.name = name;
 		this.surname = surname;
 		this.birthDate = birthDate;
@@ -72,7 +73,7 @@ public class Customer {
 	}
 
 	public Customer(Integer id, String name, String surname, Date birthDate, char gender, Set<Address> address,
-					Set<String> phones) {
+			Set<String> phones) {
 		this.id = id;
 		this.name = name;
 		this.surname = surname;
@@ -83,7 +84,7 @@ public class Customer {
 	}
 
 	public Customer(Integer id, String name, String surname, Date birthDate, char gender, Set<Address> address,
-					Set<String> phones, List<SalesOrder> salesOrders) {
+			Set<String> phones, List<SalesOrder> salesOrders) {
 		this.id = id;
 		this.name = name;
 		this.surname = surname;
@@ -157,7 +158,5 @@ public class Customer {
 	public void setSalesOrders(List<SalesOrder> salesOrders) {
 		this.salesOrders = salesOrders;
 	}
-	
-	
 
 }
