@@ -8,7 +8,12 @@ import java.util.stream.StreamSupport;
 
 import br.com.fiap.springdatajpa.advice.ResponseError;
 import br.com.fiap.springdatajpa.model.Category;
+import br.com.fiap.springdatajpa.model.Inventory;
+import br.com.fiap.springdatajpa.model.SalesOrder;
+import br.com.fiap.springdatajpa.model.SalesOrderItem;
 import br.com.fiap.springdatajpa.repository.CategoryRepository;
+import br.com.fiap.springdatajpa.repository.InventoryRepository;
+import br.com.fiap.springdatajpa.repository.SalesOrderRepository;
 import br.com.fiap.springdatajpa.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -22,12 +27,18 @@ public class ProductServiceImpl implements ProductService {
 
 	private ProductRepository productRepository;
 	private CategoryRepository categoryRepository;
+	private SalesOrderRepository salesOrderRepository;
+	private InventoryRepository inventoryRepository;
 
 	@Autowired
 	public ProductServiceImpl(final ProductRepository productRepository,
-							  final CategoryRepository categoryRepository){
+							  final CategoryRepository categoryRepository,
+							  final SalesOrderRepository salesOrderRepository,
+							  final InventoryRepository inventoryRepository){
 		this.productRepository = productRepository;
 		this.categoryRepository = categoryRepository;
+		this.salesOrderRepository = salesOrderRepository;
+		this.inventoryRepository = inventoryRepository;
 	};
 
 	@Override
@@ -87,8 +98,23 @@ public class ProductServiceImpl implements ProductService {
 
 	@Override
 	public void deleteProduct(Integer id) {
-		productRepository.delete(productRepository.findById(id).orElseThrow(() ->
-				new ResponseError(HttpStatus.NOT_FOUND, "Produto não encontrado")));
+		Product product = productRepository.findById(id).orElseThrow(() ->
+				new ResponseError(HttpStatus.NOT_FOUND, "Produto não encontrado"));
+
+		if (inventoryRepository.findByProductId(product.getId()).isPresent()) {
+			throw new ResponseError(HttpStatus.PRECONDITION_FAILED, "O produto informado possui estoque associado.");
+		}
+
+		List<SalesOrder> salesOrders = (List<SalesOrder>) salesOrderRepository.findAll();
+
+		for (SalesOrder salesOrder : salesOrders) {
+			for (SalesOrderItem salesOrderItem : salesOrder.getItens()) {
+				if (salesOrderItem.getId().getProduct().getId().equals(product.getId()))
+					throw new ResponseError(HttpStatus.PRECONDITION_FAILED, "O produto informado possui ao menos um pedido de venda associado.");
+			}
+		}
+
+		productRepository.delete(product);
 		
 	}
 

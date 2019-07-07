@@ -106,7 +106,8 @@ public class SalesOrderController {
             produces = "application/json", headers = "Accept=application/json" )
     public ResponseEntity<?> updateSalesOrder(@PathVariable("id") Integer id,
                                               @Valid @RequestBody SalesOrderRequestUpdate salesOrderRequest){
-        List<Inventory> inventoryList = validateInventory(salesOrderRequest.getItens());
+        List<Inventory> inventoryList = validateInventoryWhenUpdate(
+                salesOrderService.getSalesOrderById(id), salesOrderRequest.getItens());
         Customer customer = customerService.getCustomerById(salesOrderRequest.getCustomerId());
 
         salesOrderService.updateSalesOrder(new SalesOrder(id, customer, new Date(),
@@ -144,7 +145,7 @@ public class SalesOrderController {
     }
 
     /**
-     * Valida se todos os produtos e suas respectivas quantidades pode ser subtraídas do estoque corretamente
+     * Valida se todos os produtos e suas respectivas quantidades podem ser subtraídas do estoque corretamente
      * @param itens lista de produtos
      * @return estoque
      */
@@ -162,6 +163,52 @@ public class SalesOrderController {
                         "Não é possível realizar o pedido pois um mais produtos informados não possui a quantidade suficiente em estoque.");
             } else {
                 inventory.setAmount(inventory.getAmount() - product.get().getQuantity());
+            }
+        }
+
+        return inventoryList;
+    }
+
+    /**
+     * Valida se todos os produtos e suas respectivas quantidades podem ser subtraídas ou adicionadas ao estoque
+     * @param itens lista de produtos
+     * @return estoque
+     */
+    private List<Inventory> validateInventoryWhenUpdate(SalesOrder storedSalesOrder, List<ProductDTO> itens) {
+        List<Inventory> inventoryList = new ArrayList<>();
+        itens.stream().forEach(item -> inventoryList.add(inventoryService.getInventoryItemByProductId(item.getProductId())));
+
+        for (Inventory inventory : inventoryList) {
+            Boolean quantityGreaterThanLimit;
+            Integer quantity;
+            Optional<ProductDTO> product = itens.stream().filter(item ->
+                    item.getProductId().equals(inventory.getProduct().getId())).findFirst();
+
+            Optional<SalesOrderItem> storedProduct = storedSalesOrder.getItens().stream().filter(item ->
+                    item.getId().getProduct().getId().equals(inventory.getProduct().getId())).findFirst();
+
+            if (storedProduct.isPresent()) {
+                quantity = product.get().getQuantity() - storedProduct.get().getQuantity();
+            } else {
+                quantity = product.get().getQuantity();
+            }
+
+            quantityGreaterThanLimit = false;
+            Integer newQuantity = 0;
+            if (quantity > inventory.getAmount()){
+                quantityGreaterThanLimit = true;
+            } else if (quantity < 0) {
+                newQuantity = quantity;
+            } else {
+                newQuantity = product.get().getQuantity();
+            }
+
+            if (!product.isPresent() || quantityGreaterThanLimit){
+                throw new ResponseError(
+                        HttpStatus.UNPROCESSABLE_ENTITY,
+                        "Não é possível realizar o pedido pois um mais produtos informados não possui a quantidade suficiente em estoque.");
+            } else {
+                inventory.setAmount(inventory.getAmount() - newQuantity);
             }
         }
 

@@ -1,7 +1,9 @@
 package br.com.fiap.springdatajpa.dto.inventory;
 
-public class InventoryUpdateRequest {
+import javax.validation.constraints.NotNull;
 
+public class InventoryUpdateRequest {
+    @NotNull
     private Integer amount;
 
     public Integer getAmount() {
