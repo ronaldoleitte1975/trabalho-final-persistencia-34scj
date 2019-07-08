@@ -37,7 +37,6 @@ public class Product {
 	 * isso sera criado uma tabela automática relacionando as duas tabelas somente
 	 * com as PK de ambas que na tabela sera FK
 	 */
-
 	@ManyToMany(fetch = FetchType.LAZY)
 	@JoinTable(name = "product_category", joinColumns = @JoinColumn(name = "product_id"), inverseJoinColumns = @JoinColumn(name = "category_id"))
 	private List<Category> categories = new ArrayList<Category>();

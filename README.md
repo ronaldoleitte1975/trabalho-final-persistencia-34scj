@@ -34,14 +34,15 @@
 ## Escolha da solução
 
 a. Spring Data JPA + Cache Redis (os dois em um único projeto).
-* __Descartado__: Não identificamos necessidade de cache, exceto para lista de cidades, estados, etc., logo utilizaríamos para uma pequena parte da solução, e não nos foi apresentada necessidade de alta performance, ou grande volume de transações, o que pediria uma solução com cache.
+* __Descartada__: Não identificamos a necessidade de utilização de cache, exceto para lista de cidades, estados, etc., logo utilizaríamos para uma pequena parte da solução, e não nos foi apresentado um requisito de alta performance, ou de que a aplicação deveria estar preparada para um grande volume de transações, o que no caso jsutificaria uma solução com cache.
 
 b. Spring Data JPA (em um projeto separado) e Neo4J (em outro projeto separado).
-* __Descartado__: Neo4J foi feito para grafos, apesar de conseguirmos modelar, entendemos que não é uma boa aplicação para o nosso problema.
+* __Descartada__: Neo4J foi feito para grafos, e seu principal valor se dá em casos onde o relacionamento das informações seria o mais importante, como o foco do exercício estava não somente no relacionamento mas principalmente no conteúdo, entendemos que não é uma boa aplicação para o nosso problema.
 
-c. Spring Data JPA (em um projeto separado) e MongoDB (em outro projeto separado, sendo
-que neste projeto
-* __Escolhido__: MongoDB é adequado para a nossa solução, conseguimos usálo bem com a nossa modelagem.
+c. Spring Data JPA (em um projeto separado) e MongoDB (em outro projeto separado, sendo que neste projeto
+* __Escolhida__: Optamos por essa técnica, pois o MongoDB mostrou-se o mais adequado para a nossa solução. Com ele conseguimos tratar de forma mais otimizada algumas informações que em comparação com um banco relacional como o mysql seria necessária a criação de diversas tabelas para realizar o armazenamento da mesma informação. 
+ 
+    Apenas como comparação, na solução com banco relacional foi necessária a utilização de dez tabelas de conteúdo e mais seis tabelas de apoio para a geração das chaves primárias de algumas delas, já na solução com banco não realcional orientado a documentos, com apenas cinco tabelas de conteúdo armazenamos a mesma informação.
 
 ## Funcionalidades:
 
@@ -176,8 +177,3 @@ Para realizar um teste integrado e completo, um dos fluxos recomendados é o seg
 | 2      	| EM SEPARAÇÃO         	|
 | 3      	| EM DESLOCAMENTO      	|
 | 4      	| ENTREGUE             	|
-
-### Links:
-
-- #### [Repositório Spring Data JPA](https://github.com/ronaldoleitte1975/trabalho-final-persistencia-34scj)
-- #### [Repositório MongoDB](https://github.com/FernandaLV/trabalho-final-persistencia-34scj--mongodb)
